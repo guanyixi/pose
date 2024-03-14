@@ -1,35 +1,64 @@
-![logo](https://repository-images.githubusercontent.com/302921248/58478900-0adf-11eb-8f0b-74be58a898ef)
-
 # Pose
 
-Featuring absolutely nothing beyond a base HTML5 template and the essential setup to watch and compile your Sass alongside 11ty.
+This website is built on GitHub Pages using 11ty, a JavaScript-powered static site generator.
 
-Includes minifiying and autoprefixing of styles **during development and on build** using [Lightning CSS](https://lightningcss.dev/). The v3 update ensures processing also occurs during development.
+## Set Up the Environment
 
-If you have different preferred browser targets, be sure to modify the package `browserslist` or use a `.browserslistrc`.
+1. **Install Node.js**
 
-> **Note** > **As of v3**, Sass + LightningCSS processing now provided [via the standalone plugin](https://github.com/5t3ph/eleventy-plugin-sass-lightningcss) which you can use to add this functionality to an existing 11ty project!
+   Check if Node.js is installed:
 
-<small>Created by [@5t3ph](https://front-end.social/@5t3ph)</small>
+   ```bash
+   node -v
+   ```
 
-## Development Scripts
+   If not, install Node.js:
 
-**`npm start`**
+   - Windows: Download the installer from the [official website](https://nodejs.org/en/download/).
+   - macOS: Install using [Homebrew](https://brew.sh/):
+     ```bash
+     brew install node
+     ```
+   - Linux (Ubuntu/Debian):
+     ```bash
+     sudo apt-get update
+     sudo apt-get install nodejs
+     sudo apt-get install npm
+     ```
 
-> Run 11ty with hot reload at localhost:8080, including reload based on Sass changes
+2. **Clone the Repository**
 
-**`npm run build`**
+   Clone this repository to your local machine:
 
-> Production build includes minified, autoprefixed CSS
+   ```bash
+   git clone {git_url}
+   ```
 
-Use this as the "Publish command" if needed by hosting such as Netlify.
+3. **Install Dependencies**
 
-## Resources to extend this and learn 11ty
+   Change directory (cd) into the site repository and install the required Node modules:
 
-**A variety of tips, tutorials and resources** on [11ty Rocks!](https://11ty.rocks)
+   ```bash
+   cd {repository_name}
+   npm install
+   ```
 
-**Ensure accessible colors** by adding my [a11y-color-tokens package](https://www.npmjs.com/package/a11y-color-tokens)
+## Development and Deployment
 
-**Learn to build an 11ty site in 20 mins** with my [egghead video course](https://5t3ph.dev/learn-11ty) and see how to add a blog and custom data.
+1. **Development Scripts**
 
-**Explore advanced setup of custom data** through my [tutorial on building a community site](https://css-tricks.com/a-community-driven-site-with-eleventy-building-the-site/)
+   - Start the development server:
+
+     ```bash
+     npm start
+     ```
+
+   - Build the site for production:
+     ```bash
+     npm run build
+     ```
+
+2. **Deployment**
+
+   - When you push changes to GitHub, the workflow will copy the files from the `/public/` folder to the `gh-pages` branch.
+   - In the repository's Settings > Pages, the source should be set to "Deploy from a branch", and the Branch should be `gh-pages`, with the folder set to `/(root)`.
