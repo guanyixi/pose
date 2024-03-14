@@ -7,7 +7,7 @@ title: Home Page Title
   <div class="splide__track">
 		<ul class="splide__list">
 			<li class="splide__slide slide-left">
-                <img src="{{'/img/carousel1.jpg'}}"/>
+                <img src="{{'/img/carousel1.jpg' | url}}"/>
                 <div class="splide-content">
                     <div class="splide-content-container container">
                         <h1>Software is a Great Combination Between Artistry and Engineering.</h1>
@@ -17,7 +17,7 @@ title: Home Page Title
                 </div>
             </li>
 			<li class="splide__slide slide-center">
-                <img src="{{'/img/carousel2.jpg'}}"/>
+                <img src="{{'/img/carousel2.jpg' | url}}"/>
                 <div class="splide-content">
                     <div class="splide-content-container container">
                         <h2>Computers themselves, and software yet to be developed, will revolutionize the way we learn.</h2>
@@ -34,11 +34,11 @@ title: Home Page Title
         <h2 class="text-center">News</h2>
         {% for post in collections.news %}
             <div class="news-card">
-                <img src="{{ post.data.image }}"/>
+                <img src="{{ post.data.image | url}}"/>
                 <div>
-                    <h3><a href="{{post.url}}">{{ post.data.title }}</a></h3>
+                    <h3><a href="{{post.url | url}}">{{ post.data.title }}</a></h3>
                     <p>{{ post.data.content }}</p>
-                    <a class="btn" href="{{ post.data.link }}">Learn More</a>
+                    <a class="btn" href="{{ post.data.link | url }}">Learn More</a>
                 </div>
             </div>
         {% endfor %}
