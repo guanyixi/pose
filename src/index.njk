@@ -1,5 +1,46 @@
 ---
 layout: base.njk
-title: Hello Brooklyn
+title: Home Page Title
 ---
 
+<section class="splide splide-image-content" aria-label="Splide Basic HTML Example">
+  <div class="splide__track">
+		<ul class="splide__list">
+			<li class="splide__slide slide-left">
+                <img src="{{'/img/carousel1.jpg'}}"/>
+                <div class="splide-content">
+                    <div class="splide-content-container container">
+                        <h1>Software is a Great Combination Between Artistry and Engineering.</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempus molestie accumsan. Vivamus massa dolor, luctus vitae euismod non, tempor sed odio. Pellentesque interdum leo ut odio interdum convallis. </p>
+                        <button class="btn">OUR PEOPLE</button>
+                    </div>
+                </div>
+            </li>
+			<li class="splide__slide slide-center">
+                <img src="{{'/img/carousel2.jpg'}}"/>
+                <div class="splide-content">
+                    <div class="splide-content-container container">
+                        <h2>Computers themselves, and software yet to be developed, will revolutionize the way we learn.</h2>
+                        <button class="btn">EVENTS</button>
+                    </div>
+                </div>
+            </li>
+		</ul>
+  </div>
+</section>
+
+<div class="my-12">
+    <div class="container">
+        <h2 class="text-center">News</h2>
+        {% for post in collections.news %}
+            <div class="news-card">
+                <img src="{{ post.data.image }}"/>
+                <div>
+                    <h3><a href="{{post.url}}">{{ post.data.title }}</a></h3>
+                    <p>{{ post.data.content }}</p>
+                    <a class="btn" href="{{ post.data.link }}">Learn More</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
