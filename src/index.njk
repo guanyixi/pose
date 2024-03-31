@@ -1,46 +1,157 @@
 ---
 layout: base.njk
-title: Home Page Title
+title: Pose Phase II
 ---
 
-<section class="splide splide-image-content" aria-label="Splide Basic HTML Example">
-  <div class="splide__track">
-		<ul class="splide__list">
-			<li class="splide__slide slide-left">
-                <img src="{{'/img/carousel1.jpg' | url}}"/>
-                <div class="splide-content">
-                    <div class="splide-content-container container">
-                        <h1>Software is a Great Combination Between Artistry and Engineering.</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempus molestie accumsan. Vivamus massa dolor, luctus vitae euismod non, tempor sed odio. Pellentesque interdum leo ut odio interdum convallis. </p>
-                        <button class="btn">OUR PEOPLE</button>
-                    </div>
-                </div>
-            </li>
-			<li class="splide__slide slide-center">
-                <img src="{{'/img/carousel2.jpg' | url}}"/>
-                <div class="splide-content">
-                    <div class="splide-content-container container">
-                        <h2>Computers themselves, and software yet to be developed, will revolutionize the way we learn.</h2>
-                        <button class="btn">EVENTS</button>
-                    </div>
-                </div>
-            </li>
-		</ul>
-  </div>
+<section id="home" style="background-image:url({{'/img/home-hero.jpg' | url}})">
+    <div class="container-lg">
+        <h1 class="h6 label">POSE PHASE II</h1>
+        <h2 class="font-light mb-12">An <strong>Open Source Ecosystem</strong> for Collaborative Rapid Design of Edge AI Hardware Accelerators for Integrated Data Analysis and Discovery.</h2>
+        <a class="btn" href="#about">LEARN MORE</a>
+    </div>
 </section>
 
-<div class="my-12">
+<section id="about" class="py-20">
+    <div class="container-md text-center">
+        <img class="mb-6" src="{{'/img/hls4ml-logo.png' | url}}" width="300" height="auto"/>
+        <h2 class="h4 font-light">Our Project Aims to Develop Activities and Initiatives to Build a <strong>Strong</strong>, <strong>Equitable</strong>, and <strong>Sustainable</strong> Ecosystem for hls4ml.</h2>
+    </div>
     <div class="container">
-        <h2 class="text-center">News</h2>
-        {% for post in collections.news %}
-            <div class="news-card">
-                <img src="{{ post.data.image | url}}"/>
+        <div class="content-blocks">
+            <div class="content-block">
+                <div class="pill"></div>
+                <h3 class="h5">Networking & Training</h3>
+                <p>Through this POSE grant we are developing a series of networking and training events for trainees in the areas of science and engineering domains and current and future users of hls4ml. </p>
+            </div>
+            <div class="content-block">
+                <div class="pill"></div>
+                <h3 class="h5">Examples & Tutorials</h3>
+                <p>The amount and variety of design examples and tutorial projects will be extended significantly in order to supply the community with a solid toolbox for the longer term to become productive and efficient users and contributors of hls4ml beyond the timeline of the NSF funded period. </p>
+            </div>
+            <div class="content-block">
+                <div class="pill"></div>
+                <h3 class="h5">Technical Support</h3>
+                <p>Throughout the grant's duration we will also provide technical support through a dedicated staff member for code maintenance and development needs of contributors of hls4ml. </p>
+            </div>
+            <div class="content-block">
+                <div class="pill"></div>
+                <h3 class="h5">Curricular Components</h3>
+                <p>Curricular components developed by our project's team members will be shared with programs throughout our network.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="team" class="py-20">
+    <div class="container">
+        <h2 class="text-center h3 mb-6">Our Team</h2>
+        <div class="team-cards">
+        {% set sortedTeam = collections.team | sort(attribute='filePathStem') %}
+        {% for member in sortedTeam %}
+            <div class="card team-card">
+                <img class="avatar" src="{{ member.data.avatar | url}}" width="250" height="250"/>
                 <div>
-                    <h3><a href="{{post.url | url}}">{{ post.data.title }}</a></h3>
-                    <p>{{ post.data.content }}</p>
-                    <a class="btn" href="{{ post.data.link | url }}">Learn More</a>
+                    <h3 class="h4">{{ member.data.name }}</h3>
+                    <div class="member-meta">
+                        <div class="member-role">{{ member.data.role }}</div>
+                        <div class="member-org"><a href="{{member.data.link | url}}">{{ member.data.org }}</a></div>
+                    </div>
+                    <div class="excerpt">{{ member.data.excerpt | safe }}</div>
+                    <div class="bio">{{ member.data.bio | safe }}</div>
+                    <button class="show-bio btn-text">
+                        <span>Show More</span>
+                        <img class="icon" src="{{'/img/icon-down.svg' | url}}" width="14" height="14"/>
+                    </button>
                 </div>
             </div>
         {% endfor %}
+        </div>
     </div>
-</div>
+</section>
+
+<section class="py-20" id="events">
+    <div class="container">
+        <h2 class="text-center h3">Upcoming Events</h2>
+        {% set sortedEvents = collections.events | sort(attribute='filePathStem') %}
+        {% if sortedEvents | length > 3 %}
+        <div class="splide splide-events" aria-label="Pose events">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for event in sortedEvents %}
+                        <li class="splide__slide">
+                            {% include "eventCard.njk" %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        {% else %}
+        
+        <div class="fewer-events">
+            {% for event in sortedEvents %}
+               <div> {% include "eventCard.njk" %}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+    </div>
+</section>
+
+<section id="training-material" class="py-20">
+    <div class="container">
+        <h2 class="text-center h3">Training Material</h2>
+    </div>
+</section>
+
+<section id="success-stories" class="py-20">
+    <div class="container-md text-center">
+        <h2 class="h3">Success Stories</h2>
+        <h3 class="h4 font-light">Utilizing the Power of hls4ml for Transformative Applications in Embedded Systems and Material Science.</h3>
+    </div>
+    <div class="container">
+        <hr>
+        <div class="story">
+            <div>
+                <h3 class="display text-gradient leading-snug"><span>Wildfire Project</span></h3>
+                <h4 class="font-normal">Enabling Embedded Systems and IoT with hls4ml</h4>
+                <img class="mb-6" src="{{'/img/project-wildfire.png' | url}}" width="100%" height="auto"/>
+            </div>
+            <div>
+                <div class="pill"></div>
+                <h5>Background</h5>
+                <p>Wildfires pose an increasingly urgent global threat, as evidenced by recent devastating events in Maui, Hawaii, and across Alaska. To address this challenge, robust and reliable AI-based wildfire detection models are imperative. Our ongoing research has yielded significant advancements in video and image-based wildfire detection and ember detection AI models aimed at early prevention efforts.</p>
+
+                <div class="pill"></div>
+                <h5>Strategy</h5>
+                <p>Recognizing the computational demands of these models, we propose leveraging Field Programmable Gate Arrays (FPGAs) due to their proven flexibility and parallel computation advantages. FPGAs serve as efficient hardware accelerators for deploying deep learning models, ensuring timely and accurate wildfire detection.</p>
+
+                <div class="pill"></div>
+                <h5>Results</h5>
+                <p>To facilitate the integration of our AI detection models onto FPGAs, which have been trained using various frameworks including PyTorch and TensorFlow-Keras, we rely on the pivotal role of hls4ml in implementation. Our project focuses on demonstrating the effectiveness of AI models on FPGAs through the utilization of hls4ml, thereby enabling rapid and efficient wildfire detection and prevention strategies.</p>
+            </div>
+        </div>
+
+        <hr>
+        <div class="story">
+            <div>
+                <h3 class="display text-gradient leading-snug"><span>High Speed Camera+4D TEM</span></h3>
+                <h4 class="font-normal">Enabling Material Science with hls4ml</h4>
+            </div>
+            <div>
+                <div class="pill"></div>
+                <h5>Background</h5>
+                <p>4D Scanning Transmission Electron Microscopy (4D-STEM) is a powerful technique for atomic resolution imaging. One common imaging mode captures 2D diffraction images at each pixel position in real space. The direct electron detectors used can reach 4K resolution at frame rates up to 5000 frames-per-second. This has led to orders of magnitude increase in the volume and velocity of the data collected, creating challenges in how to efficiently extract actionable information.</p>
+
+                <div class="pill"></div>
+                <h5>Strategy</h5>
+                <p>We propose and demonstrate a machine learning hardware implementation for real-time crystal structure, rotation, and strain detection in 4D-STEM by leveraging a novel deep neural network (DNN) called a cycle-consistent spatial-transforming autoencoder (CC-ST-AE) capable of learning affine transformations on real and simulation data. We then use distillation to train a smaller, quantized, easily-deployable version of the model to enable real-time inference and high throughput.</p>
+
+                <div class="pill"></div>
+                <h5>Results</h5>
+                <p>We use hls4ml to synthesize the distilled model and optimize the implementation to meet the required latency constraint of 100us. We then integrate the neural network in the readout path of the imaging system onboard a Euresys CoaXPress frame grabber to minimize IO-related overhead. This work provides a proof-of-concept for real-time crystal structure detection in 4D-STEM, significantly increasing the potential for fast materials characterization and discovery.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
