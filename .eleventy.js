@@ -1,6 +1,9 @@
 const eleventySass = require("@11tyrocks/eleventy-plugin-sass-lightningcss");
 
 module.exports = function (eleventyConfig) {
+  
+  eleventyConfig.addWatchTarget("./src/img/");
+
   eleventyConfig.addPlugin(eleventySass);
 
   eleventyConfig.addFilter('upcomingEvents', function(events) {
