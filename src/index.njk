@@ -58,7 +58,9 @@ layout: base.njk
 <section class="py-20" id="events">
     <div class="container">
         <h2 class="text-center h3">Upcoming Events</h2>
-        {% set sortedEvents = collections.events | sort(attribute='filePathStem') %}
+        {# {% set sortedEvents = collections.events | sort(attribute='filePathStem') %} #}
+        {% set sortedEvents = collections.events | sort(attribute='filePathStem') | upcomingEvents %}
+        
         {% if sortedEvents | length > 3 %}
         <div class="splide splide-events" aria-label="Pose events">
             <div class="splide__track">
