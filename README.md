@@ -36,7 +36,7 @@ This website is built on GitHub Pages using 11ty, a JavaScript-powered static si
 
 3. **Install Dependencies**
 
-   Change directory (cd) into the site repository and install the required Node modules:
+   Navigate to the site repository using the 'cd' command and install the required Node modules:
 
    ```bash
    cd pose
@@ -61,7 +61,7 @@ This website is built on GitHub Pages using 11ty, a JavaScript-powered static si
 
 2. **Deployment**
 
-   - When you push changes to GitHub, the workflow will copy the files from the `/public/` folder to the `gh-pages` branch.
+   - When you push changes to GitHub, the GitHub Actions workflow will automatically copy the files from the `/public/` folder to the `gh-pages` branch.
    - In the repository's Settings > Pages, the source should be set to "Deploy from a branch", and the Branch should be `gh-pages`, with the folder set to `/(root)`.
    - In the root directory, change the `pathPrefix` in `.eleventy.js` to match your GitHub repository name.
 
@@ -71,7 +71,7 @@ This website is built on GitHub Pages using 11ty, a JavaScript-powered static si
 
 **File Path: `/src/_data/global.json`**
 
-This file currently controls the metadata in the `<head>` section of your HTML. For optimal display in search results, please adhere to the following guidelines:
+This file currently controls the metadata in the `<head>` section of your HTML. To optimize the display of your site in search results, please follow these guidelines:
 
 - The title should be fewer than 60 characters.
 - The description should be fewer than 160 characters.
@@ -87,7 +87,7 @@ Static content includes the following sections
 - Training Material: `/src/_data/training.json`
 - Success Stories: `/src/_data/stories.json`
 
-Eg.: The hero section content can be easily edited in the json files as below:
+Eg.: The hero section content can be easily edited in the json file as below:
 
 ![Hero JSON](./docs/img/hero-json.png)
 
@@ -100,8 +100,8 @@ In Eleventy (11ty), a collection is a set of content, typically markdown files, 
    **File Path: `/src/team/`**
 
    - Each team member's data is stored in a markdown file.
-   - On the home page, team members are displayed in the order of their file names ASC.
-   - The excerpt, which is displayed before users click the "Show More" button, should ideally be the first 1-2 sentences of the bio. This prevents content from shifting when the button is clicked.
+   - On the home page, team members are displayed in the order of their file names in ascending order.
+   - The excerpt, which is displayed before users click the "Show More" button, should ideally be the first 1-2 sentences of the bio. This prevents the layout of the page from shifting when the 'Show More' button is clicked.
 
    **Add a New Team Member**
 
@@ -114,5 +114,5 @@ In Eleventy (11ty), a collection is a set of content, typically markdown files, 
    **File Path: `/src/events/`**
 
    - Similar to the team data, each event's data is stored in a Markdown file.
-   - On the home page, events are displayed in ascending order based on their filenames, and only upcoming events are automatically displayed.
-   - If there are fewer than four events, the event cards will be displayed as static cards instead of a slider.
+   - On the home page, only upcoming events are displayed in ascending order based on their filenames. For optimal performance, older events should be moved to the `/past-events/` folder periodically.
+   - If there are fewer than four events, the event cards will be displayed as static cards, not in a slider format.
