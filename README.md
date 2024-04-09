@@ -67,7 +67,7 @@ This website is built on GitHub Pages using 11ty, a JavaScript-powered static si
 
 ## Edit Content
 
-1. **Global Content**
+### **Global Content**
 
 **File Path: `/src/_data/global.json`**
 
@@ -78,7 +78,7 @@ This file currently controls the metadata in the `<head>` section of your HTML. 
 
 ![Global JSON](./docs/img/global-json.png)
 
-2. **Static Content**
+### **Static Content**
 
 Static content includes the following sections
 
@@ -87,31 +87,32 @@ Static content includes the following sections
 - Training Material: `/src/_data/training.json`
 - Success Stories: `/src/_data/stories.json`
 
-The content can be easily edited in the json files.
+Eg.: The hero section content can be easily edited in the json files as below:
+
 ![Hero JSON](./docs/img/hero-json.png)
 
-3. **Collections**
+### **Collections**
 
 In Eleventy (11ty), a collection is a set of content, typically markdown files, that can be processed and manipulated together. Collections are used for managing teams and events to enhance scalability. This setup allows for the potential creation of individual pages for each team member or event in the future.
 
-#### Team
+1. **Team**
 
-**File Path: `/src/team/`**
+   **File Path: `/src/team/`**
 
-- Each team member's data is stored in a markdown file.
-- On the home page, team members are displayed in the order of their file names ASC.
-- The excerpt, which is displayed before users click the "Show More" button, should ideally be the first 1-2 sentences of the bio. This prevents content from shifting when the button is clicked.
+   - Each team member's data is stored in a markdown file.
+   - On the home page, team members are displayed in the order of their file names ASC.
+   - The excerpt, which is displayed before users click the "Show More" button, should ideally be the first 1-2 sentences of the bio. This prevents content from shifting when the button is clicked.
 
-**Adding a New Team Member**
+   **Add a New Team Member**
 
-1. Create a new markdown file in `/src/team/`. Name the file in the format: `{order}-{firstname}-{lastname}.md`.
-2. Add the avatar image to `/src/img/team/`. Name the image file: `{firstname}-{lastname}.jpg`. The image should be 250px by 250px and in JPG format.
-3. Copy the content from an existing team member's markdown file to the new one, then update the content as needed.
+   1. Create a new markdown file in `/src/team/`. Name the file in the format: `{order}-{firstname}-{lastname}.md`.
+   2. Add the avatar image to `/src/img/team/`. Name the image file: `{firstname}-{lastname}.jpg`. The image should be 250px by 250px and in JPG format.
+   3. Copy the content from an existing team member's markdown file to the new one, then update the content as needed.
 
-#### Events
+2. **Events**
 
-**File Path: `/src/events/`**
+   **File Path: `/src/events/`**
 
-- Similar to the team data, each event's data is stored in a Markdown file.
-- On the home page, events are displayed in ascending order based on their filenames, and only upcoming events are automatically displayed.
-- If there are fewer than four events, the event cards will be displayed as static cards instead of a slider.
+   - Similar to the team data, each event's data is stored in a Markdown file.
+   - On the home page, events are displayed in ascending order based on their filenames, and only upcoming events are automatically displayed.
+   - If there are fewer than four events, the event cards will be displayed as static cards instead of a slider.
