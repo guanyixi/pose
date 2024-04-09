@@ -1,43 +1,29 @@
 ---
 layout: base.njk
-title: Pose Phase II
 ---
 
-<section id="home" style="background-image:url({{'/img/home-hero.jpg' | url}})">
+<section id="home" style="background-image:url({{hero.backgroundImage | url}})">
     <div class="container-lg">
-        <h1 class="h4 label">POSE PHASE II</h1>
-        <h2 class="font-light mb-12">An <strong>Open Source Ecosystem</strong> for Collaborative Rapid Design of Edge AI Hardware Accelerators for Integrated Data Analysis and Discovery.</h2>
-        <a class="btn" href="#about">LEARN MORE</a>
+        <h1 class="h4 label">{{hero.title}}</h1>
+        <h2 class="font-light mb-12">{{hero.subtitle | safe}}</h2>
+        <a class="btn" href="{{hero.buttonLink}}">{{hero.buttonText}}</a>
     </div>
 </section>
 
 <section id="about" class="py-20">
     <div class="container-md text-center">
-        <img class="mb-6" src="{{'/img/hls4ml-logo.png' | url}}" width="300" height="auto"/>
-        <h2 class="h4 font-light">Our Project Aims to Develop Activities and Initiatives to Build a <strong>Strong</strong>, <strong>Equitable</strong>, and <strong>Sustainable</strong> Ecosystem for hls4ml.</h2>
+        <img class="mb-6" src="{{about.image | url}}" width="300" height="auto"/>
+        <h2 class="h4 font-light">{{about.title | safe}}</h2>
     </div>
     <div class="container">
         <div class="content-blocks">
+            {% for block in about.content %}
             <div class="content-block">
                 <div class="pill"></div>
-                <h3 class="h5">Networking & Training</h3>
-                <p>Through this POSE grant we are developing a series of networking and training events for trainees in the areas of science and engineering domains and current and future users of hls4ml. </p>
+                <h3 class="h5">{{ block.title }}</h3>
+                <p>{{ block.content | safe }}</p>
             </div>
-            <div class="content-block">
-                <div class="pill"></div>
-                <h3 class="h5">Examples & Tutorials</h3>
-                <p>The amount and variety of design examples and tutorial projects will be extended significantly in order to supply the community with a solid toolbox for the longer term to become productive and efficient users and contributors of hls4ml beyond the timeline of the NSF funded period. </p>
-            </div>
-            <div class="content-block">
-                <div class="pill"></div>
-                <h3 class="h5">Technical Support</h3>
-                <p>Throughout the grant's duration we will also provide technical support through a dedicated staff member for code maintenance and development needs of contributors of hls4ml. </p>
-            </div>
-            <div class="content-block">
-                <div class="pill"></div>
-                <h3 class="h5">Curricular Components</h3>
-                <p>Curricular components developed by our project's team members will be shared with programs throughout our network.</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -85,16 +71,13 @@ title: Pose Phase II
                 </ul>
             </div>
         </div>
-
         {% else %}
-        
         <div class="fewer-events">
             {% for event in sortedEvents %}
                <div> {% include "eventCard.njk" %}</div>
             {% endfor %}
         </div>
         {% endif %}
-        
     </div>
 </section>
 
@@ -102,74 +85,40 @@ title: Pose Phase II
     <div class="container">
         <h2 class="h3">Training Material</h2>
          <div class="content-blocks">
+            {% for block in training.material %}
             <div class="content-block">
                 <div class="pill"></div>
-                <h3 class="h5">Tutorial</h3>
+                <h3 class="h5">{{ block.title }}</h3>
             </div>
-            <div class="content-block">
-                <div class="pill"></div>
-                <h3 class="h5">Example Designs</h3>
-            </div>
-            <div class="content-block">
-                <div class="pill"></div>
-                <h3 class="h5">Training Data</h3>
-            </div>
-            <div class="content-block">
-                <div class="pill"></div>
-                <h3 class="h5">Course Materials</h3>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
 
 <section id="success-stories" class="py-20">
     <div class="container-md text-center">
-        <h2 class="h3">Success Stories</h2>
-        <h3 class="h4 font-light">Utilizing the Power of hls4ml for Transformative Applications in Embedded Systems and Material Science.</h3>
+        <h2 class="h3">{{stories.title}}</h2>
+        <h3 class="h4 font-light">{{stories.subtitle | safe}}</h3>
     </div>
     <div class="container">
-        <hr>
-        <div class="story">
-            <div>
-                <h3 class="display text-gradient leading-snug"><span>Wildfire Project</span></h3>
-                <h4 class="font-normal">Enabling Embedded Systems and IoT with hls4ml</h4>
-                <img class="mb-6" src="{{'/img/project-wildfire.png' | url}}" width="100%" height="auto"/>
+        {% for story in stories.stories %}
+            <hr>
+            <div class="story">
+                <div>
+                    <h3 class="display text-gradient leading-snug"><span>{{ story.title }}</span></h3>
+                    <h4 class="font-normal">{{ story.subtitle | safe }}</h4>
+                    {% if story.image %}
+                    <img class="mb-6" src="{{story.image | url}}" alt="{{ story.title }}" width="100%" height="auto"/>
+                    {% endif %}
+                </div>
+                <div>
+                    {% for item in story.content %}
+                    <div class="pill"></div>
+                    <h5>{{item.title}}</h5>
+                    <p>{{item.text | safe}}</p>
+                    {% endfor %}
+                </div>
             </div>
-            <div>
-                <div class="pill"></div>
-                <h5>Background</h5>
-                <p>Wildfires pose an increasingly urgent global threat, as evidenced by recent devastating events in Maui, Hawaii, and across Alaska. To address this challenge, robust and reliable AI-based wildfire detection models are imperative. Our ongoing research has yielded significant advancements in video and image-based wildfire detection and ember detection AI models aimed at early prevention efforts.</p>
-
-                <div class="pill"></div>
-                <h5>Strategy</h5>
-                <p>Recognizing the computational demands of these models, we propose leveraging Field Programmable Gate Arrays (FPGAs) due to their proven flexibility and parallel computation advantages. FPGAs serve as efficient hardware accelerators for deploying deep learning models, ensuring timely and accurate wildfire detection.</p>
-
-                <div class="pill"></div>
-                <h5>Results</h5>
-                <p>To facilitate the integration of our AI detection models onto FPGAs, which have been trained using various frameworks including PyTorch and TensorFlow-Keras, we rely on the pivotal role of hls4ml in implementation. Our project focuses on demonstrating the effectiveness of AI models on FPGAs through the utilization of hls4ml, thereby enabling rapid and efficient wildfire detection and prevention strategies.</p>
-            </div>
-        </div>
-
-        <hr>
-        <div class="story">
-            <div>
-                <h3 class="display text-gradient leading-snug"><span>High Speed Camera+4D TEM</span></h3>
-                <h4 class="font-normal">Enabling Material Science with hls4ml</h4>
-            </div>
-            <div>
-                <div class="pill"></div>
-                <h5>Background</h5>
-                <p>4D Scanning Transmission Electron Microscopy (4D-STEM) is a powerful technique for atomic resolution imaging. One common imaging mode captures 2D diffraction images at each pixel position in real space. The direct electron detectors used can reach 4K resolution at frame rates up to 5000 frames-per-second. This has led to orders of magnitude increase in the volume and velocity of the data collected, creating challenges in how to efficiently extract actionable information.</p>
-
-                <div class="pill"></div>
-                <h5>Strategy</h5>
-                <p>We propose and demonstrate a machine learning hardware implementation for real-time crystal structure, rotation, and strain detection in 4D-STEM by leveraging a novel deep neural network (DNN) called a cycle-consistent spatial-transforming autoencoder (CC-ST-AE) capable of learning affine transformations on real and simulation data. We then use distillation to train a smaller, quantized, easily-deployable version of the model to enable real-time inference and high throughput.</p>
-
-                <div class="pill"></div>
-                <h5>Results</h5>
-                <p>We use hls4ml to synthesize the distilled model and optimize the implementation to meet the required latency constraint of 100us. We then integrate the neural network in the readout path of the imaging system onboard a Euresys CoaXPress frame grabber to minimize IO-related overhead. This work provides a proof-of-concept for real-time crystal structure detection in 4D-STEM, significantly increasing the potential for fast materials characterization and discovery.</p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </section>
-

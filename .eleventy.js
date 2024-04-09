@@ -4,7 +4,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventySass);
 
   return {
-    pathPrefix: "/pose/", //If using a base path for your site
+    pathPrefix: "/pose/", // The base path in github
     dir: {
       input: "src",
       output: "public",
