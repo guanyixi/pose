@@ -2,7 +2,8 @@ const eleventySass = require("@11tyrocks/eleventy-plugin-sass-lightningcss");
 
 module.exports = function (eleventyConfig) {
   
-  eleventyConfig.addWatchTarget("./src/img/");
+  eleventyConfig.addPassthroughCopy("./src/img/");
+  eleventyConfig.addPassthroughCopy("./src/js/");
 
   eleventyConfig.addPlugin(eleventySass);
 
